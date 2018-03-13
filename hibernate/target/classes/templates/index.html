@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="text-align: center;">
+<h1>Lista osób</h1>
+    <a th:href="@{/people/new}">Dodaj osobę do listy</a><br/><br/>
+<table align="center">
+    <tr>
+        <th>Id</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Usuń</th>
+        <th>Wyświetl</th>
+        <th>Edytuj</th>
+    </tr>
+    <tr th:each="person : ${people}">
+        <td th:text="${person.id}"/>
+        <td th:text="${person.name}"/>
+        <td th:text="${person.surname}"/>
+        <td>
+            <a th:href="@{'/delete/' +${person.id}  }">Usuń</a>
+        </td>
+        <td>
+            <a th:href="@{'/people/' +${person.id} }">Wyświetl</a>
+        </td>
+        <td>
+            <a th:href="@{'/people/edit/'+${person.id}}">Edytuj</a>
+        </td>
+    </tr>
+</table>
+    <h2>Wyszukiwanie:</h2>
+<a th:href="@{/findbyname}">po imieniu</a><br/>
+<a th:href="@{/findbysurname}">po nazwisku</a>
+</div>
+</body>
+</html>
